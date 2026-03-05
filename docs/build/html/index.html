@@ -1,79 +1,39 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cruise Control with Proximal Policy Optimization (OpenAI SB3) for MAVION VTOL Platform &mdash; mavion-drl-ppo v1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=e160b93e"></script>
-      <script src="_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script src="_static/js/theme.js"></script>
+    <title>Cruise Control with Proximal Policy Optimization (OpenAI SB3) for MAVION VTOL Platform &#8212; mavion-drl-ppo v1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=e160b93e"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Literature Review" href="1-problem-definition/literature-review.html" /> 
-</head>
+    <link rel="next" title="Literature Review" href="1-problem-definition/literature-review.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
 
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
           
-          
-          <a href="#" class="icon icon-home">
-            mavion-drl-ppo
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Problem Definition</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/literature-review.html">Literature Review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/mavion-platform.html">MAVION Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/control-problem.html">Control Problem</a></li>
-</ul>
 
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">mavion-drl-ppo</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Cruise Control with Proximal Policy Optimization (OpenAI SB3) for MAVION VTOL Platform</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+          <div class="body" role="main">
+            
   <section id="cruise-control-with-proximal-policy-optimization-openai-sb3-for-mavion-vtol-platform">
-<h1>Cruise Control with Proximal Policy Optimization (OpenAI SB3) for MAVION VTOL Platform<a class="headerlink" href="#cruise-control-with-proximal-policy-optimization-openai-sb3-for-mavion-vtol-platform" title="Link to this heading"></a></h1>
+<h1>Cruise Control with Proximal Policy Optimization (OpenAI SB3) for MAVION VTOL Platform<a class="headerlink" href="#cruise-control-with-proximal-policy-optimization-openai-sb3-for-mavion-vtol-platform" title="Link to this heading">¶</a></h1>
 <p>Deep Reinforcement Learning (DRL) has shown promising potential for developing controllers capable of handling complex scenarios in the context of Hybrid Aerial Vehicles (HAVs), which combine characteristics of both fixed-wing and rotorcraft dynamics. While DRL offers the
 possibility of outperforming traditional methods in highly nonlinear systems operating under uncertain or dynamically changing conditions, its performance and robustness in real-world applications remain active areas of research. In this work, the Proximal Policy Optimization
 (PPO) algorithm—implemented via OpenAI’s Stable-Baselines3 library is employed to train policies for cruise control, assuming that trimmed level-flight can be achieved. A custom simulation and training environment was developed using the MAVION platform, a Vertical Take-Off and Landing (VTOL) Unmanned Aerial Vehicle (UAV) designed at ISAE-SUPAERO. Separate two-dimensional (2D) trajectory
@@ -81,12 +41,12 @@ controllers were trained for each phase under symmetric flight assumptions, demo
 trajectories within a predefined flight envelope. The performance of the trained controllers was also evaluated under light atmospheric turbulence, showing encouraging results and suggesting potential for robust real-world applications.</p>
 <p><strong>Keywords</strong>: Proximal Policy Optimization (PPO), Unmanned Aerial Vehicle (UAV), Hybrid Aerial Vehicle (HAV), Vertical Take-Off and Landing (VTOL), Deep Reinforcement Learning (DRL), Trajectory Controller</p>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h2>
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">¶</a></h2>
 <p>Vicente ACOSTA (ISAE-SUPAERO, MAE-ASC)
 Thibault CLARA (ISAE-SUPAERO, MAE-ASC)</p>
 </section>
 <section id="acknowledgments">
-<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading"></a></h2>
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">¶</a></h2>
 <p>Thank you to Dr. Philippe PASTOR for his support &amp; guidance throughout 2024-206 on these research efforts.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Problem Definition</span></p>
@@ -100,33 +60,72 @@ Thibault CLARA (ISAE-SUPAERO, MAE-ASC)</p>
 </section>
 
 
-           </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="1-problem-definition/literature-review.html" class="btn btn-neutral float-right" title="Literature Review" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2026, Vicente ACOSTA and Thibault CLARA.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          
         </div>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">mavion-drl-ppo</a></h1>
 
-</body>
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Problem Definition</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/literature-review.html">Literature Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/mavion-platform.html">MAVION Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-problem-definition/control-problem.html">Control Problem</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="1-problem-definition/literature-review.html" title="next chapter">Literature Review</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Vicente ACOSTA and Thibault CLARA.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
 </html>
